@@ -19,9 +19,9 @@ var $$ = {
   },
   cloner: function(){
   $("#ppl").empty();
-  var sorted = $$.leaderboard();
-  var $template = $(".person:first"), $clonedLi;
-  var ppl = sorted.map(function(p, i) {
+    var sorted = $$.leaderboard();
+    var $template = $(".person:first"), $clonedLi;
+    var ppl = sorted.map(function(p, i) {
     $clonedLi = $template.clone().show();
     $clonedLi.data("order", i);
     $clonedLi.find(".name").text(p.name);
@@ -29,9 +29,7 @@ var $$ = {
     $clonedLi.find("input").val(p.points);
     return $clonedLi;
   });
-
   $("#ppl").append(ppl);
-
   },
   eventHandler: function(){
       $("#ppl").on("dblclick", ".points", function(event) {
@@ -42,7 +40,7 @@ var $$ = {
             var person = $(this).parents(".person");
             var personIndex = person.data("order"); //problem
             var newVal = $(this).val();
-            $$.modifyPointsFor(personIndex, newVal); 
+            $$.modifyPointsFor(personIndex, newVal);
             $(this).parent().prev(".points").text(newVal); //problem
             $(this).parent().hide(); //problem
             $(".points").show();
@@ -51,26 +49,10 @@ var $$ = {
       });
 
   },
-
   data: []
 }
-
-
 $(document).ready(function() {
   $$.readData();
   $$.cloner();
   $$.eventHandler();
-
-
 })
-
-
-
-
-
-
-
-
-
-
-
